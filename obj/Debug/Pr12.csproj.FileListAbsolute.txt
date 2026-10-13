@@ -1,0 +1,7 @@
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\bin\Debug\Pr12.exe.config
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\bin\Debug\Pr12.exe
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\bin\Debug\Pr12.pdb
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\obj\Debug\Pr12.csproj.AssemblyReference.cache
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\obj\Debug\Pr12.csproj.CoreCompileInputs.cache
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\obj\Debug\Pr12.exe
+D:\Users\1213-4\Documents\2-ИСП\Абдурахманова\ОАиП\Pr12\obj\Debug\Pr12.pdb
