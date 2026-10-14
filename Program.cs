@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+//*******************************************************************************************************************
+//* Практическая_12                                                                                                 *
+//* Выполнила: Абдурахманова Х.Р., группа 2ИСП                                                                      *
+//* Задание: Функции. Сравнить шаблон с пользовательским текстом.                                                   *
+//*******************************************************************************************************************
+using System;
 
 namespace Pr12
 {
     internal class Program
     {
-        static string HandleError(Exception ex)
+        static string HandleError(Exception ex) //вывод сообщения об ошибке
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Ошибка: " + ex.Message);
             Console.ForegroundColor = ConsoleColor.Blue;
             return "Error";
         }
-        static string Checking(string a)
+        static string Checking(string a) //проверка соответствия введенного пользователем значения
         {
-            while (String.IsNullOrWhiteSpace(a)) //проверка соответствия введенного пользователем значения
+            while (String.IsNullOrWhiteSpace(a)) 
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Вы ввели число или пустую строку, а нужен текст!");
@@ -28,17 +28,20 @@ namespace Pr12
             }
             return "Error";
         }
-        static bool Comparison(char[] templateArray, char[] textArray, bool check)
+        static bool Comparison(char[] templateArray, char[] textArray) //сравнение шаблона с пользовательским текстом
         {
-            for (int i = 0; i < textArray.Length; i++)
+            if (templateArray.Length != textArray.Length)
             {
-                if (templateArray[i] == '?') check = true;
-                else
+                return false;
+            }
+            for (int i = 0; i < templateArray.Length; i++)
+            {
+                if (templateArray[i] != '?' && templateArray[i] != textArray[i])
                 {
-                    if (templateArray[i] == textArray[i]) check = true;
+                    return false;
                 }
             }
-            return check;
+            return true;
         }
         static void Main(string[] args)
         {
@@ -47,48 +50,26 @@ namespace Pr12
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string repeatAnswer;
-                bool check = false;
                 Console.Write("Здравствуйте! ");
                 do
                 {
                     Console.Write("Введите шаблон: ");
                     string template = Console.ReadLine();
                     Checking(template);
-                    //while (String.IsNullOrWhiteSpace(template)) //проверка соответствия введенного пользователем значения
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Red;
-                    //    Console.WriteLine("Вы ввели число или пустую строку, а нужен текст!");
-                    //    Console.ForegroundColor = ConsoleColor.Blue;
-                    //    Console.Write("Попробуйте еще раз: ");
-                    //    template = Console.ReadLine();
-                    //}
                     char[] templateArray = template.ToCharArray();
+
                     Console.Write("Введите текст, соответствие которого с шаблоном нужно проверить: ");
                     string text = Console.ReadLine();
-                    Checking(text);                    //while (String.IsNullOrWhiteSpace(text)) //проверка соответствия введенного пользователем значения
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Red;
-                    //    Console.WriteLine("Вы ввели число или пустую строку, а нужен текст!");
-                    //    Console.ForegroundColor = ConsoleColor.Blue;
-                    //    Console.Write("Попробуйте еще раз: ");
-                    //    text = Console.ReadLine();
-                    //}
+                    Checking(text); 
                     char[] textArray = text.ToCharArray();
-                    Comparison(templateArray, textArray, check);
-                    //for (int i = 0; i < textArray.Length; i++)
-                    //{
-                    //    if (templateArray[i] != '?')
-                    //    {
-                    //        if (templateArray[i] != textArray[i])
-                    //        {
-                    //            check = false;
-                    //        }
-                    //    }
-                    //}
-                    if (check == true) Console.WriteLine("Совпадение!");
+
+                    bool compare = Comparison(templateArray, textArray);
+                    if (compare == true) Console.WriteLine("Совпадение!");
                     else Console.WriteLine("Нет совпадения :(");
+
                     Console.WriteLine("Введите 'да' если хотите повторить программу, иначе - 'нет'. ");
                     repeatAnswer = Console.ReadLine();
+                    repeatAnswer = repeatAnswer.ToLower();
                     while ((repeatAnswer != "да") && (repeatAnswer != "нет"))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -97,7 +78,10 @@ namespace Pr12
                         Console.Write("Попробуйте еще раз: ");
                         repeatAnswer = Console.ReadLine();
                     }
-                    if (repeatAnswer == "нет") Console.Write("До свидания!");
+                    if (repeatAnswer == "нет")
+                    {
+                        Console.Write("До свидания!");
+                    }
                 }
                 while (repeatAnswer == "да");
                 Console.ReadKey();
