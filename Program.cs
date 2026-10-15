@@ -18,7 +18,7 @@ namespace Pr12
         }
         static string Checking(string a) //проверка соответствия введенного пользователем значения
         {
-            while (String.IsNullOrWhiteSpace(a)) 
+            while (String.IsNullOrWhiteSpace(a))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Вы ввели число или пустую строку, а нужен текст!");
@@ -53,30 +53,31 @@ namespace Pr12
                 Console.Write("Здравствуйте! ");
                 do
                 {
-                    Console.Write("Введите шаблон: ");
+                    Console.Write("Введите шаблон: "); //ввод шаблона
                     string template = Console.ReadLine();
-                    Checking(template);
-                    char[] templateArray = template.ToCharArray();
+                    Checking(template); //проверка соответствия
+                    char[] templateArray = template.ToCharArray(); //копирование знаков в массив
 
-                    Console.Write("Введите текст, соответствие которого с шаблоном нужно проверить: ");
+                    Console.Write("Введите текст, соответствие которого с шаблоном нужно проверить: "); //ввод текста
                     string text = Console.ReadLine();
-                    Checking(text); 
-                    char[] textArray = text.ToCharArray();
+                    Checking(text); //проверка соответствия
+                    char[] textArray = text.ToCharArray(); //копирование знаков в массив
 
-                    bool compare = Comparison(templateArray, textArray);
+                    bool compare = Comparison(templateArray, textArray); //сравнение знаков
                     if (compare == true) Console.WriteLine("Совпадение!");
                     else Console.WriteLine("Нет совпадения :(");
 
-                    Console.WriteLine("Введите 'да' если хотите повторить программу, иначе - 'нет'. ");
+                    Console.WriteLine("Введите 'да' если хотите повторить программу, иначе - 'нет'. "); //многократное выполнение программы
                     repeatAnswer = Console.ReadLine();
                     repeatAnswer = repeatAnswer.ToLower();
                     while ((repeatAnswer != "да") && (repeatAnswer != "нет"))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Неподходящее значение.");
+                        Console.WriteLine("Неподходящее значение!");
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write("Попробуйте еще раз: ");
                         repeatAnswer = Console.ReadLine();
+                        repeatAnswer = repeatAnswer.ToLower();
                     }
                     if (repeatAnswer == "нет")
                     {
