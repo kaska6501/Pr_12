@@ -9,31 +9,29 @@ namespace Pr12
 {
     internal class Program
     {
-        static string HandleError(Exception ex) //вывод сообщения об ошибке
+        static void HandleError(Exception ex) //вывод сообщения об ошибке
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Ошибка: " + ex.Message);
             Console.ForegroundColor = ConsoleColor.Blue;
-            return "Error";
         }
-        static string Checking(string a) //проверка соответствия введенного пользователем значения
+        static void Checking(string a) //проверка соответствия введенного пользователем значения
         {
             while (String.IsNullOrWhiteSpace(a))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Вы ввели число или пустую строку, а нужен текст!");
+                Console.WriteLine("Вы пустую строку, а нужен текст!");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.Write("Попробуйте еще раз: ");
                 a = Console.ReadLine();
             }
-            return "Error";
         }
         static bool Comparison(char[] templateArray, char[] textArray) //сравнение шаблона с пользовательским текстом
         {
             if (templateArray.Length != textArray.Length)
             {
                 return false;
-            }
+            }     
             for (int i = 0; i < templateArray.Length; i++)
             {
                 if (templateArray[i] != '?' && templateArray[i] != textArray[i])
@@ -70,6 +68,7 @@ namespace Pr12
                     Console.WriteLine("Введите 'да' если хотите повторить программу, иначе - 'нет'. "); //многократное выполнение программы
                     repeatAnswer = Console.ReadLine();
                     repeatAnswer = repeatAnswer.ToLower();
+                    
                     while ((repeatAnswer != "да") && (repeatAnswer != "нет"))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
