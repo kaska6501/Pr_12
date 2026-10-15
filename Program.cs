@@ -83,6 +83,7 @@ namespace Pr12
                     {
                         Console.Write("До свидания!");
                     }
+                    Console.Clear();
                 }
                 while (repeatAnswer == "да");
                 Console.ReadKey();
