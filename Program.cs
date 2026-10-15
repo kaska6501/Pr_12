@@ -79,10 +79,7 @@ namespace Pr12
                         repeatAnswer = Console.ReadLine();
                         repeatAnswer = repeatAnswer.ToLower();
                     }
-                    if (repeatAnswer == "нет")
-                    {
-                        Console.Write("До свидания!");
-                    }
+                    if (repeatAnswer == "нет") Console.Write("До свидания!");
                     else if (repeatAnswer == "да") Console.Clear();
                 }
                 while (repeatAnswer == "да");
